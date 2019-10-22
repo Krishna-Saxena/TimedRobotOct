@@ -7,9 +7,11 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.loops.Looper;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -24,6 +26,12 @@ public class Robot extends TimedRobot {
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
 
+  private Joystick throttle, turn;
+
+  private Drive mDrive = Drive.getInstance();
+  private SubsystemManager mSubsystemManager = SubsystemManager.getInstance();
+  private Looper mEnabledLooper = new Looper(), mDisabledLooper = new Looper();
+
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -33,6 +41,12 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
+
+    throttle = new Joystick(0);
+    turn = new Joystick(1);
+
+    mSubsystemManager.registerEnabledLoops(mEnabledLooper);
+    mSubsystemManager.registerDisabledLoops(mDisabledLooper);
   }
 
   /**
@@ -45,6 +59,18 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+  }
+
+  /**
+   * Initialization code for disabled mode should go here.
+   *
+   * <p>Users should override this method for initialization code which will be called each time the
+   * robot enters disabled mode.
+   */
+  @Override
+  public void disabledInit() {
+    mEnabledLooper.stop();
+    mDisabledLooper.start();
   }
 
   /**
@@ -63,6 +89,9 @@ public class Robot extends TimedRobot {
     m_autoSelected = m_chooser.getSelected();
     // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
     System.out.println("Auto selected: " + m_autoSelected);
+
+    mEnabledLooper.start();
+    mDisabledLooper.stop();
   }
 
   /**
@@ -82,10 +111,23 @@ public class Robot extends TimedRobot {
   }
 
   /**
+   * Initialization code for teleop mode should go here.
+   *
+   * <p>Users should override this method for initialization code which will be called each time the
+   * robot enters teleop mode.
+   */
+  @Override
+  public void teleopInit() {
+    mEnabledLooper.start();
+    mDisabledLooper.stop();
+  }
+
+  /**
    * This function is called periodically during operator control.
    */
   @Override
   public void teleopPeriodic() {
+    mDrive.setOpenLoop(throttle.getRawAxis(1), turn.getRawAxis(0));
   }
 
   /**
