@@ -57,17 +57,17 @@ public class Drive extends Subsystem {
         rightM.set(ControlMode.PercentOutput, 0.0);
     }
 
-    public void setOpenLoop(double throttle, double turn) {
-        double left_pwr = throttle + turn;
-        double right_pwr = throttle - turn;
+    public void setOpenLoop(double leftPwr, double rightPwr) {
+        /*ouble leftPwr = throttle + turn;
+        double rightPwr = throttle - turn;
 
-        if ((left_pwr > 1.0) || (right_pwr > 1.0)) {
-            left_pwr /= Math.max(left_pwr, right_pwr);
-            right_pwr /= Math.max(left_pwr, right_pwr);
-        }
+        if ((leftPwr > 1.0) || (rightPwr > 1.0)) {
+            leftPwr /= Math.max(leftPwr, rightPwr);
+            rightPwr /= Math.max(leftPwr, rightPwr);
+        }*/
 
-        mPerIO.left_demand = left_pwr;
-        mPerIO.right_demand = right_pwr;
+        mPerIO.left_demand = leftPwr;
+        mPerIO.right_demand = rightPwr;
     }
 
     @Override
