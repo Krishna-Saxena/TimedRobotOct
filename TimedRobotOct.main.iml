@@ -18,5 +18,38 @@
     <orderEntry type="library" name="Gradle: com.ctre.phoenix:api-java:5.14.1" level="project" />
     <orderEntry type="library" name="Gradle: com.ctre.phoenix:wpiapi-java:5.14.1" level="project" />
     <orderEntry type="library" name="Gradle: com.revrobotics.frc:SparkMax-java:1.4.1" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/edu.wpi.first.wpilibj/wpilibj-java/2019.4.1/181d600aa0815fca956ff6903748e99be9025949/wpilibj-java-2019.4.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/edu.wpi.first.wpilibj/wpilibj-java/2019.4.1/ba505e826a3d95e2acc68d1c219bb55781cd2b94/wpilibj-java-2019.4.1-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.ctre.phoenix/api-java/5.14.1/f354dfbfab42a690e510603be941d457e486cce/api-java-5.14.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.ctre.phoenix/api-java/5.14.1/81b85cd1388b0a9213f4bed0803c161eb5544c2/api-java-5.14.1-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.revrobotics.frc/SparkMax-java/1.4.1/604dd213dd00e19f7b70620e30ff04e89cca3358/SparkMax-java-1.4.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.revrobotics.frc/SparkMax-java/1.4.1/19de26f827d567f55516f008464a3b87f6844f5f/SparkMax-java-1.4.1-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>
