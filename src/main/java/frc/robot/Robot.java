@@ -28,7 +28,8 @@ public class Robot extends TimedRobot {
 
   private Joystick throttle, turn;
 
-  private Drive mDrive = Drive.getInstance();
+  private CheesyDrive mCheesyDrive = new CheesyDrive();
+  //private Drive mDrive = Drive.getInstance();
   private SubsystemManager mSubsystemManager = SubsystemManager.getInstance();
   private Looper mEnabledLooper = new Looper(), mDisabledLooper = new Looper();
 
@@ -44,6 +45,8 @@ public class Robot extends TimedRobot {
 
     throttle = new Joystick(0);
     turn = new Joystick(1);
+
+    mCheesyDrive = new CheesyDrive();
 
     mSubsystemManager.registerEnabledLoops(mEnabledLooper);
     mSubsystemManager.registerDisabledLoops(mDisabledLooper);
@@ -127,7 +130,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    mDrive.setOpenLoop(throttle.getRawAxis(1), turn.getRawAxis(0));
+    //mDrive.setOpenLoop(throttle.getRawAxis(1), turn.getRawAxis(0));
+    mCheesyDrive.setDrive2(throttle.getRawAxis(1), turn.getRawAxis(0), turn.getRawButton(0));
   }
 
   /**
